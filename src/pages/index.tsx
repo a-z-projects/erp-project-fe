@@ -1,14 +1,17 @@
 import { Inter } from "next/font/google";
-import { Button } from "@/components/ui/button";
+import Sidebar from "@/components/sidebar";
+import MenuItem from "@/components/menu-item";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isSidebarCollapse, setIsSidebarCollapse] = useState(false);
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <Button variant="default">Button</Button>
+    <main className={`${inter.className} w-full h-full flex`}>
+      <Sidebar onCollapse={(value) => setIsSidebarCollapse(value)}>
+        <MenuItem>{isSidebarCollapse ? "DB" : "DummyButton"}</MenuItem>
+      </Sidebar>
     </main>
   );
 }
