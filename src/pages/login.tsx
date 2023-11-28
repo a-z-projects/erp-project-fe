@@ -6,9 +6,9 @@ export default function LoginPage() {
     e.preventDefault();
   };
   return (
-    <main className="h-screen w-screen flex items-center justify-center bg-white">
-      <div className="w-[30%] h-[60%] bg-[#f5f4f4] rounded-xl p-6">
-        <div className="border-[1px] border-slate-500 w-full h-full rounded-xl flex flex-col items-center justify-center bg-[#f5f4f4]">
+    <main className="h-screen w-screen flex items-center justify-center bg-[#f5f4f4]">
+      <div className="w-[30%] h-[60%] bg-white rounded-xl p-6">
+        <div className="border-[1px] border-slate-500 w-full h-full rounded-xl flex flex-col items-center justify-center bg-white">
           <div className="w-[60%] flex flex-col gap-y-6 ">
             <div className="flex flex-col gap-y-1">
               <span className="font-bold text-2xl">Sign In</span>
