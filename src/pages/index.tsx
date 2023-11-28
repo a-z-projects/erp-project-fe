@@ -3,8 +3,8 @@ import Sidebar from "@/components/sidebar";
 import MenuItem from "@/components/menu-item";
 import { useState } from "react";
 import Navbar from "@/components/navbar";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Profile from "@/components/profile";
+import DashboardPage from "@/components/dashboard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className={`w-full h-screen flex`}>
       <Sidebar onCollapse={(value) => setIsSidebarCollapse(value)}>
-        <MenuItem          
+        <MenuItem
           title="Dashboard"
           isActive={selectedMenu == "dashboard"}
           onClick={() => setSelectedMenu("dashboard")}
@@ -131,12 +131,12 @@ export default function Home() {
           onClick={() => setSelectedMenu("settings")}
         />
       </Sidebar>
-      <Navbar>
-          <Profile 
-            name="Dev"
-            title="Web Developer"
-          />
-      </Navbar>
+      <div className="flex flex-col w-full">
+        <Navbar>
+          <Profile name="Dev" title="Web Developer" />
+        </Navbar>
+        <DashboardPage />
+      </div>
     </main>
   );
 }
