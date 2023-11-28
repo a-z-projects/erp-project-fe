@@ -2,6 +2,9 @@ import { Inter } from "next/font/google";
 import Sidebar from "@/components/sidebar";
 import MenuItem from "@/components/menu-item";
 import { useState } from "react";
+import Navbar from "@/components/navbar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Profile from "@/components/profile";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +13,7 @@ export default function Home() {
   const [selectedMenu, setSelectedMenu] = useState<string>("dashboard");
 
   return (
-    <main className={`w-full h-screen`}>
+    <main className={`w-full h-screen flex`}>
       <Sidebar onCollapse={(value) => setIsSidebarCollapse(value)}>
         <MenuItem          
           title="Dashboard"
@@ -128,6 +131,12 @@ export default function Home() {
           onClick={() => setSelectedMenu("settings")}
         />
       </Sidebar>
+      <Navbar>
+          <Profile 
+            name="Dev"
+            title="Web Developer"
+          />
+      </Navbar>
     </main>
   );
 }
