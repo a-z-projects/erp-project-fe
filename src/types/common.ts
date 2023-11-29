@@ -4,3 +4,9 @@ export enum ColorStatus {
   HALF = "HALF",
   FULL = "FULL",
 }
+
+export interface IRoutes {
+  name: string;
+  pageCode: string;
+  page: JSX.Element;
+}

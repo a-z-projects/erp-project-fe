@@ -9,22 +9,26 @@ interface MenuItemProps {
   subItem?: {
     link: string;
     title: string;
+    code: string;
   }[];
   isActive: boolean;
-  onClick: () => void;
+  onClick: (pageCode: string) => void;
+  pageCode?: string;
 }
 export default function MenuItem({
   title,
   subItem,
-  link,
   isActive = false,
   onClick,
-}: MenuItemProps) {
+  pageCode,
+}: Readonly<MenuItemProps>) {
   const [isCollapse, setIsCollapse] = useState<boolean>(false);
 
-  const handleClick = () => {
-    onClick();
-    setIsCollapse(!isCollapse);
+  const handleClick = (code: string, isSub: boolean) => {
+    onClick(code);
+    if(!isSub) {
+      setIsCollapse(!isCollapse);
+    }
   };
 
   return (
@@ -32,7 +36,7 @@ export default function MenuItem({
       <Button
         variant={isActive ? "secondary" : "ghost"}
         className=" flex w-full justify-start mb-2"
-        onClick={() => handleClick()}
+        onClick={() => handleClick(pageCode ?? "", false)}
       >
         {title}
       </Button>
@@ -44,13 +48,13 @@ export default function MenuItem({
                 key={index}
                 className=" ml-8 flex justify-start gap-x-3 w-full text-slate-600"
                 variant={"ghost"}
+                onClick={() => handleClick(item.code, true)}
               >
                 <p>+</p>
                 <p>{item.title}</p>
               </Button>
             );
           })}
-          {/* </ul> */}
         </div>
       )}
     </div>

@@ -1,11 +1,12 @@
 import { Inter } from "next/font/google";
 import Sidebar from "@/components/sidebar";
 import MenuItem from "@/components/menu-item";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import Profile from "@/components/profile";
 import DashboardPage from "@/components/dashboard";
 import ProjectPage from "@/components/project";
+import { Routes } from "@/constants/routes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,8 @@ export default function Home() {
         <MenuItem
           title="Dashboard"
           isActive={selectedMenu == "dashboard"}
-          onClick={() => setSelectedMenu("dashboard")}
+          pageCode="dashboard"
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
@@ -28,18 +30,21 @@ export default function Home() {
             {
               link: "/dashboard",
               title: "SPK",
+              code: "spk",
             },
             {
               link: "/dashboard",
               title: "RAB",
+              code: "rab",
             },
             {
               link: "/dashboard",
-              title: "DAM",
+              title: "rap",
+              code: "rap",
             },
           ]}
           isActive={selectedMenu == "project"}
-          onClick={() => setSelectedMenu("project")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
@@ -48,22 +53,26 @@ export default function Home() {
             {
               link: "/dashboard",
               title: "Purchase Request",
+              code: "purchase-request",
             },
             {
               link: "/dashboard",
               title: "Purchase Order",
+              code: "purchase-order",
             },
             {
               link: "/dashboard",
               title: "Work Order",
+              code: "work-order",
             },
             {
               link: "/dashboard",
               title: "Petty Cash",
+              code: "petty-cash",
             },
           ]}
           isActive={selectedMenu == "order"}
-          onClick={() => setSelectedMenu("order")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
@@ -72,18 +81,21 @@ export default function Home() {
             {
               link: "/dashboard",
               title: "Material Masuk",
+              code: "material-masuk",
             },
             {
               link: "/dashboard",
               title: "Material Keluar",
+              code: "material-keluar",
             },
             {
               link: "/dashboard",
               title: "Stock Opname",
+              code: "stock-opname",
             },
           ]}
           isActive={selectedMenu == "material"}
-          onClick={() => setSelectedMenu("material")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
@@ -92,14 +104,16 @@ export default function Home() {
             {
               link: "/dashboard",
               title: "Daily Report",
+              code: "daily-report",
             },
             {
               link: "/dashboard",
               title: "Progress Report",
+              code: "progress-report",
             },
           ]}
           isActive={selectedMenu == "report"}
-          onClick={() => setSelectedMenu("report")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
@@ -108,36 +122,37 @@ export default function Home() {
             {
               link: "/dashboard",
               title: "Vouching",
+              code: "vouching",
             },
             {
               link: "/dashboard",
               title: "Invoice",
+              code: "invoice",
             },
           ]}
           isActive={selectedMenu == "finance"}
-          onClick={() => setSelectedMenu("finance")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
           title="Master Data"
-          link="/dashboard"
+          pageCode="master-data"
           isActive={selectedMenu == "master-data"}
-          onClick={() => setSelectedMenu("master-data")}
+          onClick={(value) => setSelectedMenu(value)}
         />
 
         <MenuItem
           title="Settings"
-          link="/dashboard"
+          pageCode="settings"
           isActive={selectedMenu == "settings"}
-          onClick={() => setSelectedMenu("settings")}
+          onClick={(value) => setSelectedMenu(value)}
         />
       </Sidebar>
       <div className="flex flex-col w-full">
         <Navbar>
           <Profile name="Dev" title="Web Developer" />
         </Navbar>
-        {/* <DashboardPage /> */}
-        <ProjectPage />
+        {Routes.find((el) => el.pageCode == selectedMenu)?.page}
       </div>
     </main>
   );
