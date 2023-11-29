@@ -1,9 +1,4 @@
-import { ArrowUp, BarChartBigIcon, Wallet } from "lucide-react";
-import Overfiew from "./overfiew";
-import DashboardTable from "./table";
-import Pagination from "../pagination";
 import { useState } from "react";
-import DashboardOverfiew from "./dashboard-overfiew";
 import DetailDashbaord from "./detail-dashboard";
 
 export default function DashboardPage() {

@@ -5,6 +5,7 @@ import { useState } from "react";
 import Navbar from "@/components/navbar";
 import Profile from "@/components/profile";
 import DashboardPage from "@/components/dashboard";
+import ProjectPage from "@/components/project";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +14,7 @@ export default function Home() {
   const [selectedMenu, setSelectedMenu] = useState<string>("dashboard");
 
   return (
-    <main className={`w-full h-screen flex`}>
+    <main className={`w-full h-full flex`}>
       <Sidebar onCollapse={(value) => setIsSidebarCollapse(value)}>
         <MenuItem
           title="Dashboard"
@@ -135,7 +136,8 @@ export default function Home() {
         <Navbar>
           <Profile name="Dev" title="Web Developer" />
         </Navbar>
-        <DashboardPage />
+        {/* <DashboardPage /> */}
+        <ProjectPage />
       </div>
     </main>
   );
