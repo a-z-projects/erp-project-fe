@@ -1,6 +1,7 @@
-import { ColorStatus, colorByStatus } from "@/lib/utils";
+import { colorByStatus } from "@/lib/utils";
 import { Badge } from "../ui/badge";
 import { Search } from "lucide-react";
+import { ColorStatus } from "@/types/common";
 
 export default function DashboardTable() {
   return (
@@ -9,6 +10,8 @@ export default function DashboardTable() {
         <TableHeader />
       </thead>
       <tbody>
+        <TableBody />
+        <TableBody />
         <TableBody />
       </tbody>
     </table>

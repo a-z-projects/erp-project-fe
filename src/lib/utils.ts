@@ -1,15 +1,9 @@
+import { ColorStatus } from "@/types/common";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
-
-export enum ColorStatus {
-  EMPTY = "EMPTY",
-  LESS = "LESS",
-  HALF = "HALF",
-  FULL = "FULL",
 }
 
 export function colorByStatus(status: ColorStatus) {
